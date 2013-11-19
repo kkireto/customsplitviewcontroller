@@ -10,8 +10,6 @@
 #import "AppDelegate.h"
 #import "CustomSplitViewController.h"
 
-#define viewWidth 768.0
-
 @interface CenterViewController ()
 
 @end
@@ -43,31 +41,12 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.width = viewWidth;
-    self.view.frame = viewFrame;
-    
-    viewFrame = self.navigationController.navigationBar.frame;
-    viewFrame.size.width = viewWidth;
-    self.navigationController.navigationBar.frame = viewFrame;
-    
     if ((toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)) {
         self.navigationItem.leftBarButtonItem = nil;
     }
     else {
         [[AppDelegate instance].customSplitViewController setupLeftMenuButtonForController:self];
     }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.width = viewWidth;
-    self.view.frame = viewFrame;
-    
-    viewFrame = self.navigationController.navigationBar.frame;
-    viewFrame.size.width = viewWidth;
-    self.navigationController.navigationBar.frame = viewFrame;
 }
 
 @end

@@ -8,8 +8,6 @@
 
 #import "LeftMenuViewController.h"
 
-#define viewWidth 256.0
-
 @interface LeftMenuViewController ()
 
 @end
@@ -37,28 +35,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.width = viewWidth;
-    self.view.frame = viewFrame;
-    
-    viewFrame = self.navigationController.navigationBar.frame;
-    viewFrame.size.width = viewWidth;
-    self.navigationController.navigationBar.frame = viewFrame;
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    CGRect viewFrame = self.view.frame;
-    viewFrame.size.width = viewWidth;
-    self.view.frame = viewFrame;
-    
-    viewFrame = self.navigationController.navigationBar.frame;
-    viewFrame.size.width = viewWidth;
-    self.navigationController.navigationBar.frame = viewFrame;
 }
 
 @end
