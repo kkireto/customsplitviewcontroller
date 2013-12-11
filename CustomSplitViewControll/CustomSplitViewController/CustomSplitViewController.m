@@ -17,6 +17,7 @@
 
 @property(nonatomic,assign)CGFloat touchOffset;
 @property(nonatomic,assign)CGFloat topOffset;
+@property(nonatomic,assign)BOOL isNotFirstAppear;
 @property(nonatomic,assign)BOOL isLeftControllerVisible;
 @property(nonatomic,strong)UIPanGestureRecognizer *panGesture;
 @property(nonatomic,strong)UIView *maskView;
@@ -55,9 +56,22 @@
     self.navigationController.navigationBarHidden = YES;
     _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _topOffset = 0.0;
+    _isNotFirstAppear = NO;
     
     [self createCenterView];
     [self setupView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (_isNotFirstAppear) {
+        
+    }
+    else {
+        _isNotFirstAppear = YES;
+        [self willAnimateRotationToInterfaceOrientation:[UIApplication sharedApplication].statusBarOrientation duration:0.4];
+    }
 }
 
 - (void)didReceiveMemoryWarning
